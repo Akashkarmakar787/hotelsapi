@@ -1,0 +1,5 @@
+onecomment:
+  post: "hello"
+  hotel_id: Hotel.find_by(name:"utkal", address:"Bhubaneswar").id
+  user_id: User.find_by(email:"akashkarmakar787@gmail.com").id
+
