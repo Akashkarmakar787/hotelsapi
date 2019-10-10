@@ -41,10 +41,12 @@ class CommentsController < ApplicationController
 
             if user && user.authenticate(params[:password])
      	        @u=User.find_by(email: params[:useremail].downcase)
-     	
-     	        @comments=@u.comments
-              render json: {useremail: params[:useremail], comments:@comments}, status:200
-     	
+     	        if @u.present?
+     	           @comments=@u.comments
+                  render json: {useremail: params[:useremail], comments:@comments}, status:200
+     	        else
+                render json:{message:"user not found"}, stauts: 404
+              end
             else
               response = {message: 'invalid credentials'}
 		          render json: response, status: 401
