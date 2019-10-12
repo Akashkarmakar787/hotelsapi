@@ -41,7 +41,7 @@ class HotelsController < ApplicationController
       render json: response, status: 201
     else
       response = { message: @hotel.errors.full_messages }
-      render json: response, status: :bad
+      render json: response, status: 422
     end
   end
 end

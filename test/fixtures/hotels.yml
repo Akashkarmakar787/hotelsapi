@@ -1,6 +1,8 @@
 onehotel:
   hotel_name: utkal
   hotel_address: Bhubaneswar
+  hotel_rating: 
 twohotel:
   hotel_name: Fab
   hotel_address: kolkata
+  hotel_rating:

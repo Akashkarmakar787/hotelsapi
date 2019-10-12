@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
       if user&.authenticate(params[:password])
 
         @comments = Comment.all
-        render json: { comment: @comments }, status: 200
+        #render json: { comment: @comments }, status: 200
 
       else
         response = { message: 'login unsuccessfully' }
@@ -42,7 +42,8 @@ class CommentsController < ApplicationController
             @comments = @u.comments
           # render json: {useremail: params[:useremail], comments:@comments}, status:200
           else
-            render json: { message: 'user not found' }, stauts: 404
+            response={ message: 'user not found' }
+            render json: response, status: 404
           end
         else
           response = { message: 'invalid credentials' }

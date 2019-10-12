@@ -1,3 +1,12 @@
 one:
+  username: Akash
   email: "akashkarmakar787@gmail.com"
   password_digest: <%= BCrypt::Password.create('abc') %>
+two:
+   username: Vivek
+   email: "vivekbrahmankar@gmail.com"
+   password_digest: <%= BCrypt::Password.create('abc') %>
+three:
+  username: Aman
+  email: "amannaik@gmail.com"
+  password_digest:  <%= BCrypt::Password.create('abc') %>

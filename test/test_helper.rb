@@ -3,6 +3,8 @@
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
+require 'json_expressions/minitest'
+require 'json_expressions/rspec'
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers

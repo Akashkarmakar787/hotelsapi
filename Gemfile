@@ -14,6 +14,7 @@ gem 'puma', '~> 3.11'
 
 gem 'htmlbeautifier'
 gem 'rubocop', require: false
+gem 'json_expressions'
 
 gem 'bcrypt', '~>3.1.7'
 gem 'rack-cors', require: 'rack/cors'
