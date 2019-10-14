@@ -1,30 +1,27 @@
 # frozen_string_literal: true
 
 class HotelsController < ApplicationController
+  before_action :set_email, only:[:index,:address]
   def index
-    if !params[:email].present?
-      render json: { message: 'provide email address for authentication' }, status: 406
-
-    else
+    
+    
       user = User.find_by(email: params[:email])
-      if user&.authenticate(params[:password])
+      if user&&user.authenticate(params[:password])
         @hotels = Hotel.all
       # render json: {hotels: @hotels}, status: 200
       else
         response = { message: 'invalid credentials' }
         render json: response, status: 401
       end
-    end
+    
   end
 
   def address
-    if !params[:email].present?
-      render json: { message: 'provide email address for authentication' }, status: 406
-    elsif !params[:address].present?
+    if !params[:address].present?
       render json: { message: 'provide a address' }, status: 406
     else
       user = User.find_by(email: params[:email])
-      if user&.authenticate(params[:password])
+      if user&&user.authenticate(params[:password])
         @hotels = Hotel.where(hotel_address: params[:address])
         # render json: {address:params[:address], hotels: @hotels}
       else
@@ -44,4 +41,13 @@ class HotelsController < ApplicationController
       render json: response, status: 422
     end
   end
+  private
+    def set_email
+      if !params[:email].present?
+        render json: { message: 'provide email address for authentication' }, status: 406
+      end
+    end
+
+
+
 end

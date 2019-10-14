@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'test_helper'
+require 'yajl'
+require 'json-compare'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
 
@@ -11,9 +13,21 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
      post allusers_url, params: { email: 'akashkarmakar787@gmail.com', password: 'abc' }, as: :json
      assert_response :success
     
-     server_response= JSON.parse(response.body)
-     assert_equal server_response[2]["username"], users(:one).username
-     assert_equal server_response[2]["email"], users(:one).email
+     server_responses= JSON.parse(response.body)
+     
+
+     json1 = server_responses.to_json
+     #puts json1
+
+     json2 = User.all.to_json(only:[:email,:username])
+
+
+     #puts json2
+     old, new = Yajl::Parser.parse(json1), Yajl::Parser.parse(json2)
+     result = JsonCompare.get_diff(old, new)
+     #puts result
+     assert_equal result,{}
+    
 
   end
   test 'emailid non presence' do

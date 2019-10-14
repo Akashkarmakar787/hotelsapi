@@ -11,11 +11,12 @@ gem 'rails', '~> 6.0.0'
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
-
+gem 'json-compare'
+gem 'jwt'
 gem 'htmlbeautifier'
 gem 'rubocop', require: false
 gem 'json_expressions'
-
+gem 'yajl-ruby'
 gem 'bcrypt', '~>3.1.7'
 gem 'rack-cors', require: 'rack/cors'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

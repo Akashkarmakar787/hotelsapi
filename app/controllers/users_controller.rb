@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  
   def index
     if !params[:email].present?
       render json: { message: 'provide username and password for authentication' }, status: 406
     else
       user = User.find_by(email: params[:email])
-      if user&.authenticate(params[:password])
+      if user&&user.authenticate(params[:password])
         @users = User.all
         # render json:{users:@users}, status: 200
       else
@@ -25,4 +26,6 @@ class UsersController < ApplicationController
       render json: { message: @user.errors.full_messages }, status: 422
     end
   end
+  private
+
 end
