@@ -13,6 +13,7 @@ gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 3.11'
 gem 'json-compare'
 gem 'jwt'
+gem 'simple_command'
 gem 'htmlbeautifier'
 gem 'rubocop', require: false
 gem 'json_expressions'

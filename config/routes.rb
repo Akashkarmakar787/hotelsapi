@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   post 'allusers', to: 'users#index'
   post 'createuser', to: 'users#create'
+
+  post 'authenticate', to: 'authentication#authenticate'
 end
